@@ -1,15 +1,35 @@
-{{> header}}
-<h2>{{title}}</h2>
+{{> header-blog}}
+    <div class="container">
 
-<article>
-    <ul>
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
         {{#each collections.posts}}
-            <li>
-                <h3>{{this.title}}</h3>
-                <article>{{{this.contents}}}</article>
-            </li>
+            <div class="blog-post">
+            <h2 class="blog-post-title">{{this.title}}</h2>
+            <p class="blog-post-meta">{{this.date}} by <a href="{{this.authorUrl}}">{{this.author}}</a></p>
+            {{{this.contents}}}
+            </div>
         {{/each}}
-    </ul>
-</article>
+
+        </div>
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+                  <div class="sidebar-module sidebar-module-inset">
+                    <h4>About</h4>
+                    <p>Ramblings mostly about JavaScript or Python.</p>
+          </div>
+          <div class="sidebar-module">
+            <h4>Elsewhere</h4>
+            <ul class="list-unstyled">
+              <li><a href="https://github.com/bjdixon">GitHub</a></li>
+            </ul>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
 
 {{> footer}}

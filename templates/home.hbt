@@ -1,12 +1,14 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <title>{{ title }}</title>
-</head>
-<body>
-    <div class="main-wrapper">
+{{> header-home}}
+
+    <div class="container">
+      
+      <div class="row">
+
+        <div class="col-sm-12 blog-main">
         {{{ contents }}}
+        </div>
+
+      </div>
     </div>
-</body>
-</html>
+
+{{> footer}}
