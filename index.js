@@ -6,6 +6,7 @@ const permalinks = require('metalsmith-permalinks');
 const Handlebars = require('handlebars');
 const fs = require('fs');
 
+Handlebars.registerPartial('head', fs.readFileSync(__dirname + '/templates/partials/head.hbt').toString());
 Handlebars.registerPartial('header-blog', fs.readFileSync(__dirname + '/templates/partials/header-blog.hbt').toString());
 Handlebars.registerPartial('header-home', fs.readFileSync(__dirname + '/templates/partials/header-home.hbt').toString());
 Handlebars.registerPartial('header-about', fs.readFileSync(__dirname + '/templates/partials/header-about.hbt').toString());
