@@ -6,11 +6,10 @@ const permalinks = require('metalsmith-permalinks');
 const Handlebars = require('handlebars');
 const fs = require('fs');
 
-Handlebars.registerPartial('head', fs.readFileSync(__dirname + '/templates/partials/head.hbt').toString());
-Handlebars.registerPartial('header-blog', fs.readFileSync(__dirname + '/templates/partials/header-blog.hbt').toString());
-Handlebars.registerPartial('header-home', fs.readFileSync(__dirname + '/templates/partials/header-home.hbt').toString());
-Handlebars.registerPartial('header-about', fs.readFileSync(__dirname + '/templates/partials/header-about.hbt').toString());
-Handlebars.registerPartial('footer', fs.readFileSync(__dirname + '/templates/partials/footer.hbt').toString());
+const partials = ['head', 'header-blog', 'header-home', 'header-about', 'footer'];
+const partialsPath = '/templates/partials/';
+
+partials.forEach((partial) => Handlebars.registerPartial(partial, fs.readFileSync(`${__dirname}${partialsPath}${partial}.hbt`).toString()));
 
 Metalsmith(__dirname)
   .use(collections({
