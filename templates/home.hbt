@@ -6,6 +6,8 @@
 
         <div class="col-sm-12 blog-main">
         {{{ contents }}}
+        <p><strong>Current mood is:</strong> <em>{{mood}}</em></p>
+        {{{moodTube mood}}}
         </div>
 
       </div>
