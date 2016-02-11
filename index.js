@@ -6,7 +6,7 @@ const permalinks = require('metalsmith-permalinks');
 const Handlebars = require('handlebars');
 const fs = require('fs');
 
-const partials = ['head', 'header-blog', 'header-home', 'header-about', 'footer'];
+const partials = ['head', 'header-notes', 'header-home', 'header-about', 'footer'];
 const partialsPath = '/templates/partials/';
 
 partials.forEach((partial) => Handlebars.registerPartial(partial, fs.readFileSync(`${__dirname}${partialsPath}${partial}.hbt`).toString()));

@@ -4,7 +4,7 @@
       <div class="container">
         <nav class="nav blog-nav">
           <a class="nav-link" href="/">Home</a>
-          <a class="nav-link" href="/pages/blog/">Blog</a>
+          <a class="nav-link" href="/pages/notes/">Notes</a>
           <a class="nav-link active" href="#">About</a>
         </nav>
       </div>
@@ -13,7 +13,7 @@
     <div class="blog-header">
       <div class="container">
         <h1 class="blog-title">About</h1>
-        <p class="lead blog-description">The personal website of Brian Dixon (bjdixon)</p>
+        <p class="lead blog-description">This is the personal website of Brian Dixon (bjdixon)</p>
       </div>
     </div>
 

@@ -1,5 +1,5 @@
 ---
 title: Blog
-template: blog.hbt
+template: notes.hbt
 ---
 
