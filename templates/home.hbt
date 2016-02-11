@@ -6,7 +6,7 @@
 
         <div class="col-sm-12 blog-main">
         {{{ contents }}}
-        <p><strong>Current mood is:</strong> <em>{{mood}}</em></p>
+        <p><strong>My current mood could be best described as:</strong> <em>{{mood}}</em></p>
         {{{moodTube mood}}}
         </div>
 

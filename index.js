@@ -15,6 +15,13 @@ Handlebars.registerHelper('moodTube', (mood) => {
   const moods = {
     disco: 'dSuulW6XqSA',
     champloo: '_sccg1CZzi4',
+    unfulfilled: 'gxEPV4kolz0',
+    miserable: 'TaUUYV7wKos',
+    oops: 'FgxEJOi6GtA',
+    sunflowers: '_sccg1CZzi4',
+    tequila: 'OMyUvqTYzJ4',
+    boogie: 'god7hAPv8f0',
+    babo: 'BclmGVKdHII',
   };
 
   return new Handlebars.SafeString(
