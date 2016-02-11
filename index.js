@@ -22,6 +22,18 @@ Handlebars.registerHelper('moodTube', (mood) => {
   );
 });
 
+Handlebars.registerHelper('ellipsis', (content) => {
+  const contentText = content.toString().substring(0, 300);
+  return new Handlebars.SafeString(`${contentText}...`);
+});
+
+Handlebars.registerHelper('formatDate', (date) => {
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const dateObj = new Date(date);
+  return new Handlebars.SafeString(`${days[dateObj.getDay()]}, ${months[dateObj.getMonth()]} ${dateObj.getDate()}, ${dateObj.getFullYear()}`);
+});
+
 Metalsmith(__dirname)
   .use(collections({
     pages: {

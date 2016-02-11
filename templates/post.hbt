@@ -7,7 +7,7 @@
 
             <div class="blog-post">
             <h2 class="blog-post-title">{{title}}</h2>
-            <p class="blog-post-meta">{{date}} by <a href="{{authorUrl}}">{{author}}</a></p>
+            <p class="blog-post-meta">{{formatDate date}} by <a href="{{authorUrl}}">{{author}}</a></p>
             {{{contents}}}
             </div>
 
