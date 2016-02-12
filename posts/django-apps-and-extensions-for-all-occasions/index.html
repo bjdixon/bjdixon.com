@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon.ico">
+
+    <title>Django apps and extensions for all occasions | bjdixon.com</title>
+
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/blog.css" rel="stylesheet">
+    <!--
+
+
+
+
+
+    ＼(^‿^ )／ Let's dance!
+
+
+
+            ƪ(‾.‾“)┐    ƪ(˘⌣˘)┐    ƪ(˘⌣˘)ʃ    ┌("‾.‾)ʃ
+
+
+
+
+
+    -->
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link" href="/">Home</a>
+          <a class="nav-link active" href="#">Notes</a>
+          <a class="nav-link" href="/pages/about/">About</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="blog-header">
+      <div class="container">
+        <h1 class="blog-title">Notes about things</h1>
+        <p class="lead blog-description">A collection of my notes. Provided as is with no warranty of any kind expressed or implied.</p>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+            <div class="blog-post">
+            <h2 class="blog-post-title">Django apps and extensions for all occasions</h2>
+            <p class="blog-post-meta">Sun, Jan 19, 2014 by <a href="https://github.com/bjdixon">bjdixon</a></p>
+            <p>I&#39;ve used most of these and the others are highly recommended. I&#39;ll be using them when the need arises. Pretty much I update this list as I find better alternatives or discover new gems. </p>
+<p>The descriptions are mostly not mine, but provide a good reminder for use-cases.</p>
+<p><strong>django-debug-toolbar:</strong> Gives you a running toolbar on all your pages when in development showing static contents, templates, context and a variety of other really cool things. Removes the need to debug from terminal.</p>
+<p><strong>django-mptt:</strong> Efficient DB storage and retrieval of hierarchical data. e.g. modelling nested sections of a website, navigation trees, or any other parent-child relationships.</p>
+<p><strong>django-fsm:</strong> Manage state and transitions, safely and effectively. Great for workflows. Any time you find yourself using boolean fields that are dependant and mutually exclusive, you probably need a state field.</p>
+<p><strong>django-crispy-forms:</strong> simple things like adding the necessary markup for bootstrap to forms is super-boring otherwise ; in general, it helps with custom form layout, which is usually a template maintenance hell</p>
+<p><strong>django-rest-framework:</strong> for making REST APIs - more customizable than tastypie</p>
+<p><strong>django-secure:</strong> to help improve any django project&#39;s security in a very simple way.</p>
+<p><strong>django-remote-forms:</strong> for working with django&#39;s forms in a purely RESTful way.</p>
+<p><strong>django-haystack:</strong> makes search really easy.</p>
+<p><strong>django-allauth:</strong> deals with a lot of the authentication flow for you, and supports a lot of oauth providers.</p>
+<p><strong>django-oauth2-provider:</strong> for easy-to-configure Oauth2 authentication in django. works nicely with tastypie and djangorestframework as an added bonus</p>
+<p><strong>django-taggit:</strong> a django tagging app and the autosuggest works with it to auto suggest tags that have already been used previously when you start typing.</p>
+<p><strong>django-braces:</strong> nice set of mixins. I&#39;m pretty sure you have already written something similar, but these are better. </p>
+<p><strong>django mailer:</strong> provides a backend for sending email (EMAIL_BACKEND) which stores emails in a queue in the database, to be sent out later from a cronjob using your actual email backend.</p>
+<p><strong>django-jenkins:</strong> CI</p>
+<p><strong>Fabric:</strong> Run tests before committing</p>
+<p><strong>sorl-thumbnail:</strong> Makes it easy to process images and display thumbnails.</p>
+<p><strong>celery:</strong> this once was a django extension, but is still nice for delayed tasks.</p>
+<p><strong>selenium:</strong> for functional testing</p>
+<p>###References</p>
+<p><a href="http://www.reddit.com/r/django/comments/1ypfre/ask_rdjango_what_are_your_favourite_extensions/">http://www.reddit.com/r/django/comments/1ypfre/ask_rdjango_what_are_your_favourite_extensions/</a>
+<a href="https://news.ycombinator.com/item?id=7030994">https://news.ycombinator.com/item?id=7030994</a>
+Two Scoops of Django</p>
+
+            </div>
+
+        </div>
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+                  <div class="sidebar-module sidebar-module-inset">
+                    <h4>About</h4>
+                    <p>Ramblings mostly about JavaScript or Python.</p>
+          </div>
+          <div class="sidebar-module">
+            <h4>Elsewhere</h4>
+            <ul class="list-unstyled">
+              <li><a href="https://github.com/bjdixon">GitHub</a></li>
+            </ul>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+
+    <footer class="blog-footer">
+      <p>Bye.</p>
+    </footer>
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/ie10-viewport-bug-workaround.js"></script>
+    <script>
+    var _gaq = _gaq || [['_trackPageview']];
+    _gaq.unshift(['_setAccount', 'UA-1050597-5']);
+    (function(d, t) {
+        var g = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+        g.async = true;
+        g.src = '//www.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g, s);
+    })(document, 'script');
+    </script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-1050597-5', 'bjdixon.com');
+      ga('send', 'pageview');
+
+    </script>
+
+    <!--
+
+
+
+    See ya!  (^_^)／
+
+
+
+    -->
+  </body>
+</html>
+

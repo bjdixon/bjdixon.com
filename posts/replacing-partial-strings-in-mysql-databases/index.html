@@ -8,10 +8,27 @@
     <meta name="author" content="">
     <link rel="icon" href="/favicon.ico">
 
-    <title>Blog | bjdixon.com</title>
+    <title>Replacing partial strings in MySQL databases | bjdixon.com</title>
 
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/blog.css" rel="stylesheet">
+    <!--
+
+
+
+
+
+    ＼(^‿^ )／ Let's dance!
+
+
+
+            ƪ(‾.‾“)┐    ƪ(˘⌣˘)┐    ƪ(˘⌣˘)ʃ    ┌("‾.‾)ʃ
+
+
+
+
+
+    -->
   </head>
 
   <body>
@@ -20,7 +37,7 @@
       <div class="container">
         <nav class="nav blog-nav">
           <a class="nav-link" href="/">Home</a>
-          <a class="nav-link active" href="#">Blog</a>
+          <a class="nav-link active" href="#">Notes</a>
           <a class="nav-link" href="/pages/about/">About</a>
         </nav>
       </div>
@@ -40,10 +57,14 @@
         <div class="col-sm-8 blog-main">
 
             <div class="blog-post">
-            <h2 class="blog-post-title">hello</h2>
-            <p class="blog-post-meta">Fri Feb 05 2016 19:00:00 GMT-0500 (EST) by <a href="https://github.com/bjdixon">bjdixon</a></p>
-            <p>hello blog</p>
-
+            <h2 class="blog-post-title">Replacing partial strings in MySQL databases</h2>
+            <p class="blog-post-meta">Wed, Jul 30, 2014 by <a href="https://github.com/bjdixon">bjdixon</a></p>
+            <p>I&#39;m sure there&#39;s a better way but sometimes I need to replace a partial string in a database. For example replacing a domain name. </p>
+<p>Be careful with this. Find/replace is awesome and if you&#39;re not careful it can really screw you up. With that in mind:</p>
+<pre><code>UPDATE DBNAME.TableName
+SET DBNAME.TableName = REPLACE(DBNAME.TableName.FieldName,&#39;OldString&#39;,&#39;NewString&#39;)
+WHERE DBNAME.TableName.FieldName like &#39;%OldString%&#39;;
+</code></pre>
             </div>
 
         </div>
@@ -94,5 +115,16 @@
       ga('send', 'pageview');
 
     </script>
+
+    <!--
+
+
+
+    See ya!  (^_^)／
+
+
+
+    -->
   </body>
 </html>
+

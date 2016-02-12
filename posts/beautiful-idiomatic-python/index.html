@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon.ico">
+
+    <title>Beautiful idiomatic Python | bjdixon.com</title>
+
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/blog.css" rel="stylesheet">
+    <!--
+
+
+
+
+
+    ＼(^‿^ )／ Let's dance!
+
+
+
+            ƪ(‾.‾“)┐    ƪ(˘⌣˘)┐    ƪ(˘⌣˘)ʃ    ┌("‾.‾)ʃ
+
+
+
+
+
+    -->
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link" href="/">Home</a>
+          <a class="nav-link active" href="#">Notes</a>
+          <a class="nav-link" href="/pages/about/">About</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="blog-header">
+      <div class="container">
+        <h1 class="blog-title">Notes about things</h1>
+        <p class="lead blog-description">A collection of my notes. Provided as is with no warranty of any kind expressed or implied.</p>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+            <div class="blog-post">
+            <h2 class="blog-post-title">Beautiful idiomatic Python</h2>
+            <p class="blog-post-meta">Fri, Jan 24, 2014 by <a href="https://github.com/bjdixon">bjdixon</a></p>
+            <p>Notes I made whilst watching (and rewatching) Raymond Hettinger&#39;s Pycon 2013 talk. (don&#39;t do this, do this)</p>
+<p>Replace traditional index manipulation with Python’s core looping idioms.
+Learn advanced techniques with for-else clauses and the two argument form of iter().
+Clarify function calls with keyword arguments.</p>
+<p>Tuple packing and unpacking
+Don’t under‐estimate the advantages of updating state variables at the same time. It eliminates an entire class of errors due to out­of-order updates. It allows high level thinking: “chunking”.</p>
+<p>Decorators and Context Managers
+Helps separate business logic from administrative logic. Clean, beautiful tools for factoring code and improving code reuse. Good naming is essential.</p>
+<p>Factor out temporary contexts by using &quot;with&quot; instead of &quot;try/finally&quot;.</p>
+<p>One logical line of code equals one sentence in English.</p>
+<p>###Looping over a range of numbers</p>
+<p><strong>Don&#39;t do this</strong></p>
+<pre><code>for i in [0, 1, 2, 3, 4, 5]:
+    print i**2
+</code></pre><p><strong>Do this</strong></p>
+<pre><code>for i in range(6):
+    print i**2
+</code></pre><p>###Looping over a collection</p>
+<pre><code>colors = [&#39;red&#39;, &#39;green&#39;, &#39;blue&#39;, &#39;yellow&#39;]
+</code></pre><p><strong>Don&#39;t do this</strong></p>
+<pre><code>for i in range(len(colors)):
+    print colors[i]
+</code></pre><p><strong>Do this instead</strong></p>
+<pre><code>for color in colors:
+    print color
+</code></pre><p>(Reversed)
+<strong>Don&#39;t do this</strong></p>
+<pre><code>for i in range(len(colors)-1, -1, -1):
+    print colors[i]
+</code></pre><p><strong>Do this instead</strong></p>
+<pre><code>for color in reversed(colors):
+    print color
+</code></pre><p>###Looping over a collection and indicies</p>
+<p><strong>Don&#39;t do this</strong></p>
+<pre><code>for i in range(len(colors)):
+    print i, &#39;--&gt;&#39;, colors[i]
+</code></pre><p><strong>Do this instead</strong></p>
+<pre><code>for i, color in enumerate(colors):
+    print i, &#39;--&gt;&#39;, color
+</code></pre><p>###Looping over two collections</p>
+<pre><code>names = [&#39;raymond&#39;, &#39;rachel&#39;, &#39;matthew&#39;]
+colors = [&#39;red&#39;, &#39;green&#39;, &#39;blue&#39;, &#39;yellow&#39;]
+
+for name, color in izip(names, colors):
+    print name, &#39;--&gt;&#39;, color
+</code></pre><p>(Construct a dictionary from these pairs)</p>
+<pre><code>d = dict(izip(names, colors))
+{&#39;matthew&#39;: &#39;blue&#39;, &#39;rachel&#39;: &#39;green&#39;, &#39;raymond&#39;: &#39;red&#39;}
+
+d = dict(enumerate(names))
+{0: &#39;raymond&#39;, 1: &#39;rachel&#39;, 2: &#39;matthew&#39;}
+</code></pre><p>###Looping in sorted order</p>
+<pre><code>colors = [&#39;red&#39;, &#39;green&#39;, &#39;blue&#39;, &#39;yellow&#39;]
+for color in sorted(colors):
+    print color
+
+for color in sorted(colors, reverse=True):
+    print color
+</code></pre><p>###Custom sort order</p>
+<pre><code>colors = [&#39;red&#39;, &#39;green&#39;, &#39;blue&#39;, &#39;yellow&#39;]
+</code></pre><p><strong>Don&#39;t do this</strong></p>
+<pre><code>def compare_length(c1, c2):
+    if len(c1) &lt; len(c2): return -1
+    if len(c1) &gt; len(c2): return 1
+    return 0
+
+print sorted(colors, cmp=compare_length)
+</code></pre><p><strong>Do this</strong></p>
+<pre><code>print sorted(colors, key=len)
+</code></pre><p>###Multiple exit points in loops</p>
+<p><strong>Don&#39;t do this</strong></p>
+<pre><code>def find(seq, target):
+    found = False
+    for i, value in enumerate(seq):
+        if value == tgt:
+            found = True
+            break
+    if not found:
+        return -1
+    return i
+</code></pre><p><strong>Do this</strong></p>
+<pre><code>def find(seq, target):
+    for i, value in enumerate(seq):
+        if value == tgt:
+            break
+        else:
+            return -1
+    return i
+
+###Looping over dictionary keys
+</code></pre><p>d = {&#39;matthew&#39;: &#39;blue&#39;, &#39;rachel&#39;: &#39;green&#39;, &#39;raymond&#39;: &#39;red&#39;}</p>
+<pre><code>
+**Don&#39;t do this**
+</code></pre><p>for k in d:
+    print k</p>
+<pre><code>
+**Or this**
+</code></pre><p>for k in d.keys():
+    if k.startswith(&#39;r&#39;):
+        del d[k]</p>
+<pre><code>
+**Do this**
+</code></pre><p>d = {k : d[k] for k in d if not k.startswith(&#39;r&#39;)}</p>
+<pre><code>
+###Looping over a dictionary keys and values
+
+**Don&#39;t do this**
+</code></pre><p>for k in d:
+    print k, &#39;--&gt;&#39;, d[k]</p>
+<pre><code>
+**Or this**
+</code></pre><p>for k, v in d.items():
+    print k, &#39;--&gt;&#39;, v</p>
+<pre><code>
+**Do this**
+</code></pre><p>for k, v in d.iteritems():
+    print k, &#39;--&gt;&#39;, v</p>
+<pre><code>
+###Counting with dictionaries
+</code></pre><p>colors = [&#39;red&#39;, &#39;green&#39;, &#39;red&#39;, &#39;blue&#39;, &#39;green&#39;, &#39;red&#39;]</p>
+<pre><code>
+**Don&#39;t do this**
+</code></pre><p>d = {}
+for color in colors:
+    if color not in d:
+        d[color] = 0
+    d[color] += 1</p>
+<p>{&#39;blue&#39;: 1, &#39;green&#39;: 2, &#39;red&#39;: 3}</p>
+<pre><code>
+**Or this**
+</code></pre><p>d = {}
+for color in colors:
+    d[color] = d.get(color, 0) + 1</p>
+<pre><code>
+**Do this**
+</code></pre><p>d = defaultdict(int)
+for color in colors:
+    d[color] += 1</p>
+<pre><code>
+###List Comprehensions and Generator Expressions
+
+**Don&#39;t do this**
+</code></pre><p>result = []
+for i in range(10):
+    s = i ** 2
+    result.append(s)
+print sum(result)</p>
+<pre><code>
+**Do this**
+</code></pre><p>print sum(i**2 for i in xrange(10))</p>
+<pre><code>
+###Unpacking sequences
+</code></pre><p>p = &#39;Raymond&#39;, &#39;Hettinger&#39;, 0x30, &#39;python@example.com&#39;</p>
+<pre><code>
+**Don&#39;t do this**
+</code></pre><p>fname = p[0]
+lname = p[1]
+age = p[2]
+email = p[3]</p>
+<pre><code>
+**Do this**
+</code></pre><p>fname, lname, age, email = p</p>
+<pre><code>
+###Updating multiple state variables
+
+**Don&#39;t do this**
+</code></pre><p>def fibonacci(n):
+    x = 0
+    y = 1
+    for i in range(n):
+        print x
+        t = y
+        y = x + y
+        x = t</p>
+<pre><code>
+**Do this**
+</code></pre><p>def fibonacci(n):
+    x, y = 0, 1
+    for i in range(n):
+        print x
+        x, y = y, x+y
+```</p>
+<p>###References
+<a href="https://www.youtube.com/watch?v=OSGv2VnC0go">https://www.youtube.com/watch?v=OSGv2VnC0go</a></p>
+
+            </div>
+
+        </div>
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+                  <div class="sidebar-module sidebar-module-inset">
+                    <h4>About</h4>
+                    <p>Ramblings mostly about JavaScript or Python.</p>
+          </div>
+          <div class="sidebar-module">
+            <h4>Elsewhere</h4>
+            <ul class="list-unstyled">
+              <li><a href="https://github.com/bjdixon">GitHub</a></li>
+            </ul>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+
+    <footer class="blog-footer">
+      <p>Bye.</p>
+    </footer>
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/ie10-viewport-bug-workaround.js"></script>
+    <script>
+    var _gaq = _gaq || [['_trackPageview']];
+    _gaq.unshift(['_setAccount', 'UA-1050597-5']);
+    (function(d, t) {
+        var g = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+        g.async = true;
+        g.src = '//www.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g, s);
+    })(document, 'script');
+    </script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-1050597-5', 'bjdixon.com');
+      ga('send', 'pageview');
+
+    </script>
+
+    <!--
+
+
+
+    See ya!  (^_^)／
+
+
+
+    -->
+  </body>
+</html>
+
