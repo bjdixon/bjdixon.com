@@ -18,10 +18,11 @@ Handlebars.registerHelper('moodTube', (mood) => {
     unfulfilled: 'gxEPV4kolz0',
     miserable: 'TaUUYV7wKos',
     oops: 'FgxEJOi6GtA',
-    sunflowers: '_sccg1CZzi4',
-    tequila: 'OMyUvqTYzJ4',
+    content: '_sccg1CZzi4',
+    understood: 'OMyUvqTYzJ4',
     boogie: 'god7hAPv8f0',
     babo: 'BclmGVKdHII',
+    purupururin: 'u_7z_WVcpdw',
   };
 
   return new Handlebars.SafeString(
@@ -30,7 +31,7 @@ Handlebars.registerHelper('moodTube', (mood) => {
 });
 
 Handlebars.registerHelper('ellipsis', (content) => {
-  const contentText = content.toString().substring(0, 300);
+  const contentText = content.toString().substring(0, 300).replace(/<\/?[^>]+(>|$)/g, "");
   return new Handlebars.SafeString(`${contentText}...`);
 });
 
