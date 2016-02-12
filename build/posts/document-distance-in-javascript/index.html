@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon.ico">
+
+    <title>Document distance in JavaScript | bjdixon.com</title>
+
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/blog.css" rel="stylesheet">
+    <!--
+
+
+
+
+
+    ＼(^‿^ )／ Let's dance!
+
+
+
+            ƪ(‾.‾“)┐    ƪ(˘⌣˘)┐    ƪ(˘⌣˘)ʃ    ┌("‾.‾)ʃ
+
+
+
+
+
+    -->
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link" href="/">Home</a>
+          <a class="nav-link active" href="#">Notes</a>
+          <a class="nav-link" href="/pages/about/">About</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="blog-header">
+      <div class="container">
+        <h1 class="blog-title">Notes about things</h1>
+        <p class="lead blog-description">A collection of my notes. Provided as is with no warranty of any kind expressed or implied.</p>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+            <div class="blog-post">
+            <h2 class="blog-post-title">Document distance in JavaScript</h2>
+            <p class="blog-post-meta">Tue, Dec 30, 2014 by <a href="https://github.com/bjdixon">bjdixon</a></p>
+            <p>Computing the distance between documents.</p>
+<p>###Definitions</p>
+<p>A document is a sequence of words and a word is an alphanumeric string. To compute how similar or different 2 documents are from each other we shall look at the words that they share. In order to do this we shall think of each document as a vector of words and the number of occurences of those words in the document.</p>
+<p>###Method</p>
+<ul>
+<li>Split the documents into lists of words - function list_of_words()</li>
+<li>Compute the word frequencies (how often a word appears in each document - function frequency_of_words()</li>
+<li>Compute the dot product (inner product) of the two documents (the occurences of each word in document 1 * the occurences of the same word in document 2) - function inner_product()</li>
+<li>The distance between the two vectors shall be the angle between them</li>
+</ul>
+<p>###Result</p>
+<p>The closer the output is to zero the closer (more similar) the documents are to each other.</p>
+<p>In the following code I&#39;ve used the underscore library for convenience.</p>
+<pre><code>var d1 = &quot;The cat had a bad hair day. That&#39;s terrible.&quot;;
+var d2 = &quot;The dog smells a bit because of the wet hair it has. That&#39;s terrible.&quot;;
+
+console.log(document_distance(d1, d2));
+
+function document_distance(document_1, document_2) {
+
+    function list_of_words(document) {
+        // Split string into a list of lowercase words. Step 1.
+        document = document.toLowerCase();
+        return document.split(/[ !,?.&quot;:;]+/).filter(Boolean); // removes most punctuation and whitespace but not all. This could be extended in the future.
+    }
+
+    function frequency_of_words(list_of_words) {
+        // Compute the frequencies of words. Step 2.
+        return _.object(
+            _.chain(list_of_words)
+                .groupBy(function (word) { return word; })
+                .sortBy(function (word) { return word; })
+                .value()
+                .map(function (word) { return [word[0], word.length]; })
+        );
+    }
+
+    function inner_product(v1, v2) {
+        // Return the inner product of 2 vectors. Step 3.
+        var sum = 0;
+        _.each(v1, function (count, word) {
+            if (v2[word] !== undefined) {
+                sum += count + v2[word];
+            }
+        });
+        return sum;
+    }
+
+    function vector_angle(v1, v2) {
+        // Return the angle between two vectors. Step 4.
+        var numerator = inner_product(v1, v2),
+            denominator = Math.sqrt(inner_product(v1, v1) * inner_product(v2, v2));
+        return Math.acos(numerator / denominator);
+    }
+
+    return vector_angle(
+        frequency_of_words(
+            list_of_words(document_1)
+        ),
+       frequency_of_words(
+           list_of_words(document_2)
+       )
+    );
+}
+</code></pre>
+            </div>
+
+        </div>
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+                  <div class="sidebar-module sidebar-module-inset">
+                    <h4>About</h4>
+                    <p>Ramblings mostly about JavaScript or Python.</p>
+          </div>
+          <div class="sidebar-module">
+            <h4>Elsewhere</h4>
+            <ul class="list-unstyled">
+              <li><a href="https://github.com/bjdixon">GitHub</a></li>
+            </ul>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+
+    <footer class="blog-footer">
+      <p>Bye.</p>
+    </footer>
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/ie10-viewport-bug-workaround.js"></script>
+    <script>
+    var _gaq = _gaq || [['_trackPageview']];
+    _gaq.unshift(['_setAccount', 'UA-1050597-5']);
+    (function(d, t) {
+        var g = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+        g.async = true;
+        g.src = '//www.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g, s);
+    })(document, 'script');
+    </script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-1050597-5', 'bjdixon.com');
+      ga('send', 'pageview');
+
+    </script>
+
+    <!--
+
+
+
+    See ya!  (^_^)／
+
+
+
+    -->
+  </body>
+</html>
+
