@@ -26,7 +26,7 @@ Handlebars.registerHelper('moodTube', (mood) => {
   };
 
   return new Handlebars.SafeString(
-    `<iframe width="420" height="315" src="https://www.youtube.com/embed/${moods[mood]}" frameborder="0" allowfullscreen></iframe>`
+    `<iframe src="https://www.youtube.com/embed/${moods[mood]}" frameborder="0" allowfullscreen></iframe>`
   );
 });
 
@@ -53,7 +53,7 @@ Metalsmith(__dirname)
       reverse: true
     }
   }))
-  .use(markdown())
+  .use(markdown({ gfm: false }))
   .use(permalinks({
     pattern: ':collection/:title'
   }))

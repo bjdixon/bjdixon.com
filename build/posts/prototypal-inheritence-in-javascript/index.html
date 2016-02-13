@@ -9,7 +9,7 @@
     <link rel="icon" href="/favicon.ico">
 
     <title>Prototypal inheritence in JavaScript | bjdixon.com</title>
-
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/blog.css" rel="stylesheet">
     <!--
@@ -62,43 +62,43 @@
             <p>Objects are bags of properties (own properties). Each object has a link to a prototype object. </p>
 <p>A prototype is a property of functions and objects that are created by constructor functions. </p>
 <p>When an inherited function is executed &#39;this&#39; points to the inheriting object, not the prototype object: </p>
-<pre><code>var o = { a:2, m:function() {return this.a + 1;} };
+<p><code>var o = { a:2, m:function() {return this.a + 1;} };
 console.log(o.m()); // 3
 var p = Object.create(o);
 p.a = 12;
-console.log(p.m()); // 13
-</code></pre><p>The prototype of a function is an object. It&#39;s main use is when a function is used as a constructor:</p>
-<pre><code>function Vehicle (wheels, engine) {
+console.log(p.m()); // 13</code></p>
+<p>The prototype of a function is an object. It&#39;s main use is when a function is used as a constructor:</p>
+<p><code>function Vehicle (wheels, engine) {
     this.wheels = wheels;
     this.engine = engine;
-}
-</code></pre><p>The prototype of the Vehicle function is the prototype of any object that is instantiated with the Vehicle constructor:</p>
-<pre><code>var testVehicle = new Vehicle(2, false);
-</code></pre><p>The prototype property can be used to add properties and methods to objects even after instantiation:</p>
-<pre><code>var testCar = new Vehicle(4, &quot;V8&quot;);
+}</code></p>
+<p>The prototype of the Vehicle function is the prototype of any object that is instantiated with the Vehicle constructor:</p>
+<p><code>var testVehicle = new Vehicle(2, false);</code></p>
+<p>The prototype property can be used to add properties and methods to objects even after instantiation:</p>
+<p><code>var testCar = new Vehicle(4, &quot;V8&quot;);
 Vehicle.prototype.color = &quot;red&quot;;
-console.log(testCar.color); // &quot;red&quot;
-</code></pre><p>The prototype object can be used to derive one object from another with Object.create:</p>
-<pre><code>var Bicycle = Object.create(Object.getPrototypeOf(Vehicle), { &quot;pedals&quot;: { value:true } });
-</code></pre><p>The Bicycle object has the properties wheels, engine, color and pedals. It&#39;s prototype is Vehicle.prototype. The JavaScript engine finds the pedals property on Bicycle and looks up the prototype chain to find the wheels, engine and color properties on Vehicle.</p>
-<p>###The inheritence chain</p>
+console.log(testCar.color); // &quot;red&quot;</code></p>
+<p>The prototype object can be used to derive one object from another with Object.create:</p>
+<p><code>var Bicycle = Object.create(Object.getPrototypeOf(Vehicle), { &quot;pedals&quot;: { value:true } });</code></p>
+<p>The Bicycle object has the properties wheels, engine, color and pedals. It&#39;s prototype is Vehicle.prototype. The JavaScript engine finds the pedals property on Bicycle and looks up the prototype chain to find the wheels, engine and color properties on Vehicle.</p>
+<h3 id="the-inheritence-chain">The inheritence chain</h3>
 <p>Objects can be created using syntax constructs, by calling a constructor function, or by calling Object.create():</p>
-<pre><code>var o = { a:1 }; // syntax construct
-
-function Coords(x, y) {
+<p>```
+var o = { a:1 }; // syntax construct</p>
+<p>function Coords(x, y) {
  this.x = x;
  this.y = y;
 }
-var c = new Coords(5, 5); // calling a constructor function 
-
-var b = Object.create(o); // calling Object.create()
-</code></pre><p>o inherits Object.prototype and Object.prototype has null as it&#39;s prototype.</p>
+var c = new Coords(5, 5); // calling a constructor function </p>
+<p>var b = Object.create(o); // calling Object.create()
+```</p>
+<p>o inherits Object.prototype and Object.prototype has null as it&#39;s prototype.</p>
 <p>c is an object with own properties x and y. </p>
 <p>b inherits from o which inherits from Object.prototype which inherits from null.</p>
-<pre><code>a = [1, 2];
-</code></pre><p>a&#39;s prototype chain looks like this: a -&gt; Array.prototype -&gt; Object.prototype -&gt; null</p>
-<pre><code>function f() { return 1; }
-</code></pre><p>f&#39;s prototype chain looks like this: f -&gt; Function.prototype -&gt; Object.prototype -&gt; null</p>
+<p><code>a = [1, 2];</code></p>
+<p>a&#39;s prototype chain looks like this: a -&gt; Array.prototype -&gt; Object.prototype -&gt; null</p>
+<p><code>function f() { return 1; }</code></p>
+<p>f&#39;s prototype chain looks like this: f -&gt; Function.prototype -&gt; Object.prototype -&gt; null</p>
 
             </div>
 
