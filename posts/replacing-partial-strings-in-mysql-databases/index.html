@@ -9,7 +9,7 @@
     <link rel="icon" href="/favicon.ico">
 
     <title>Replacing partial strings in MySQL databases | bjdixon.com</title>
-
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/blog.css" rel="stylesheet">
     <!--
@@ -61,10 +61,10 @@
             <p class="blog-post-meta">Wed, Jul 30, 2014 by <a href="https://github.com/bjdixon">bjdixon</a></p>
             <p>I&#39;m sure there&#39;s a better way but sometimes I need to replace a partial string in a database. For example replacing a domain name. </p>
 <p>Be careful with this. Find/replace is awesome and if you&#39;re not careful it can really screw you up. With that in mind:</p>
-<pre><code>UPDATE DBNAME.TableName
+<p><code>UPDATE DBNAME.TableName
 SET DBNAME.TableName = REPLACE(DBNAME.TableName.FieldName,&#39;OldString&#39;,&#39;NewString&#39;)
-WHERE DBNAME.TableName.FieldName like &#39;%OldString%&#39;;
-</code></pre>
+WHERE DBNAME.TableName.FieldName like &#39;%OldString%&#39;;</code></p>
+
             </div>
 
         </div>

@@ -9,7 +9,7 @@
     <link rel="icon" href="/favicon.ico">
 
     <title>Peakfinding in JavaScript | bjdixon.com</title>
-
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/blog.css" rel="stylesheet">
     <!--
@@ -61,17 +61,17 @@
             <p class="blog-post-meta">Tue, Nov 18, 2014 by <a href="https://github.com/bjdixon">bjdixon</a></p>
             <p>Some notes on peak finding in 1D and 2D arrays in javascript.</p>
 <h2 id="one-dimensional-arrays">One dimensional arrays</h2>
-<p>###The data structure</p>
+<h3 id="the-data-structure">The data structure</h3>
 <p>So we have an array: </p>
 <p>| a | b | c | d | e | f | g | h | i |</p>
 <p>The characters a through i represent unknown numerical values. </p>
-<p>###The problem defined</p>
+<h3 id="the-problem-defined">The problem defined</h3>
 <p>The definition of a peak we are working with is that it exists when the values in the next and previous position are less than or equal to the value in the current position. In other words d will be a peak if d &gt;= c and d &gt;= e.</p>
-<p>###Solution 1 - Greedy peak finding algorithm</p>
+<h3 id="solution-1-greedy-peak-finding-algorithm">Solution 1 - Greedy peak finding algorithm</h3>
 <p>We start from the left most position and look at each element until we find a peak. Complexity: O(n).</p>
-<pre><code>var a = [3, 5, 6, 4, 7, 9, 3];
-
-for (var i = 0; i &lt;= a.length; i += 1) {
+<p>```
+var a = [3, 5, 6, 4, 7, 9, 3];</p>
+<p>for (var i = 0; i &lt;= a.length; i += 1) {
     if (i &gt; 0) {
         if (a[i] &lt; a[i-1]) {
             continue;
@@ -82,16 +82,16 @@ for (var i = 0; i &lt;= a.length; i += 1) {
         break;
     }
 }
-</code></pre><p>###Solution 2 - Divide and conquor</p>
+```</p>
+<h3 id="solution-2-divide-and-conquor">Solution 2 - Divide and conquor</h3>
 <p>We have an array (a) of n elements: </p>
 <p>| 1 | 2 | ... n/2 ... | n-1 | n |</p>
 <p>We start by looking at position n/2. If a[n/2] &lt; a[n/2 -1] then look at the left half of the array (next position being n/2 -1) for a peak. Otherwise, if a[n/2] &lt; a[n/2 +1] then we&#39;ll look to the right half of the array for a peak. If neither of these conditions were true then n/2 is a peak. Complexity O(log n).</p>
-<pre><code>var a = [3, 5, 6, 4, 7, 9, 3];
-
-var answer = find_1d_peak(a, Math.floor(a.length/2));
-console.log(&quot;Found a peak at position &quot; + answer);
-
-function find_1d_peak(a, i) {
+<p>```
+var a = [3, 5, 6, 4, 7, 9, 3];</p>
+<p>var answer = find_1d_peak(a, Math.floor(a.length/2));
+console.log(&quot;Found a peak at position &quot; + answer);</p>
+<p>function find_1d_peak(a, i) {
     if (i-1 &gt;= 0) {
         if (a[i] &lt; a[i-1]) {
             return find_1d_peak(a, i-1);
@@ -102,68 +102,68 @@ function find_1d_peak(a, i) {
         return i;
     }
 }
-</code></pre><h2 id="two-dimensional-arrays">Two dimensional arrays</h2>
-<pre><code>+---+---+---+---+
+```</p>
+<h2 id="two-dimensional-arrays">Two dimensional arrays</h2>
+<p><code>+---+---+---+---+
 |   | c |   |   |
 +---+---+---+---+
 | b | a | d |   |
 +---+---+---+---+
 |   | e |   |   |
-+---+---+---+---+
-</code></pre><p>##The problem defined</p>
++---+---+---+---+</code></p>
+<h2 id="the-problem-defined">The problem defined</h2>
 <p>a is a 2D peak if a &gt;= b and a &gt;= c and a &gt;= d and a &gt;= e.</p>
-<p>###Solutions</p>
+<h3 id="solutions">Solutions</h3>
 <p>For a 2D array a greedy ascent algorithm would be O(n2) where the number of columns (m) equals the number of rows (n). Otherwise it would be O(nm).</p>
 <p>A more efficient solution would be to pick a middle column (j = m/2), find the global maximum on that column (i, j). Then compare the values in the left and right columns at row i: (i, j-1), (i, j), (i, j+1). If (i, j) &gt;= (i, j-1) and (i, j) &gt;= (i, j+1) then (i, j) is a 2D peak. If we didn&#39;t find a 2D peak then step to the next row to the left and repeat the process. This has a complexity of O(n log n).</p>
-<pre><code>var a2 = [
+<p>```
+var a2 = [
     [2, 3, 4, 5],
     [4, 2, 3, 4],
     [5, 3, 5, 6],
     [6, 7, 4, 2]
-];
-
-var answer2 = find_2d_peak(a2);
-console.log(&quot;found a 2D peak at &quot; + answer2);
-
-function find_2d_peak(a) {
+];</p>
+<p>var answer2 = find_2d_peak(a2);
+console.log(&quot;found a 2D peak at &quot; + answer2);</p>
+<p>function find_2d_peak(a) {
     var j = Math.floor(a[0].length / 2), // middle column
-        i = get_column_max(0, 0, j);
-
-    function get_column_max(max, row_number, column_number) {
-        if (row_number &lt; a.length) {
-            if (a[row_number][column_number] &gt; max) {
-                max = a[row_number][column_number];
-                i = row_number;
-            }
-            return get_column_max(max, row_number + 1, column_number);
+        i = get_column_max(0, 0, j);</p>
+<pre><code>function get_column_max(max, row_number, column_number) {
+    if (row_number &lt; a.length) {
+        if (a[row_number][column_number] &gt; max) {
+            max = a[row_number][column_number];
+            i = row_number;
         }
-        return i;
+        return get_column_max(max, row_number + 1, column_number);
     }
+    return i;
+}
 
-    function check_for_peak(i, j) {
-        if (j === 0) {
-            if (a[i][j] &gt;= a[i][j + 1]) {
-               return [i, j];
-            }
-            i = get_column_max(0, 0, a[i].length - 1);
-            return check_for_peak(i, a[i].length - 1);
+function check_for_peak(i, j) {
+    if (j === 0) {
+        if (a[i][j] &gt;= a[i][j + 1]) {
+           return [i, j];
         }
-        if (j === a[i].length - 1) {
-            if (a[i][j] &gt;= a[i][j - 1]) {
-                return [i, j];
-            }
-            i = get_column_max(0, 0, j - 1);
-            return check_for_peak(i, j - 1);
-        }
-        if (a[i][j] &gt;= a[i][j + 1] &amp;&amp; a[i][j] &gt;= a[i][j - 1]) {
+        i = get_column_max(0, 0, a[i].length - 1);
+        return check_for_peak(i, a[i].length - 1);
+    }
+    if (j === a[i].length - 1) {
+        if (a[i][j] &gt;= a[i][j - 1]) {
             return [i, j];
         }
         i = get_column_max(0, 0, j - 1);
         return check_for_peak(i, j - 1);
     }
-    return check_for_peak(i, j);
+    if (a[i][j] &gt;= a[i][j + 1] &amp;&amp; a[i][j] &gt;= a[i][j - 1]) {
+        return [i, j];
+    }
+    i = get_column_max(0, 0, j - 1);
+    return check_for_peak(i, j - 1);
 }
-</code></pre>
+return check_for_peak(i, j);
+</code></pre><p>}
+```</p>
+
             </div>
 
         </div>

@@ -9,7 +9,7 @@
     <link rel="icon" href="/favicon.ico">
 
     <title>Beautiful idiomatic Python | bjdixon.com</title>
-
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/blog.css" rel="stylesheet">
     <!--
@@ -69,68 +69,72 @@ Don’t under‐estimate the advantages of updating state variables at the same 
 Helps separate business logic from administrative logic. Clean, beautiful tools for factoring code and improving code reuse. Good naming is essential.</p>
 <p>Factor out temporary contexts by using &quot;with&quot; instead of &quot;try/finally&quot;.</p>
 <p>One logical line of code equals one sentence in English.</p>
-<p>###Looping over a range of numbers</p>
+<h3 id="looping-over-a-range-of-numbers">Looping over a range of numbers</h3>
 <p><strong>Don&#39;t do this</strong></p>
-<pre><code>for i in [0, 1, 2, 3, 4, 5]:
-    print i**2
-</code></pre><p><strong>Do this</strong></p>
-<pre><code>for i in range(6):
-    print i**2
-</code></pre><p>###Looping over a collection</p>
-<pre><code>colors = [&#39;red&#39;, &#39;green&#39;, &#39;blue&#39;, &#39;yellow&#39;]
-</code></pre><p><strong>Don&#39;t do this</strong></p>
-<pre><code>for i in range(len(colors)):
-    print colors[i]
-</code></pre><p><strong>Do this instead</strong></p>
-<pre><code>for color in colors:
-    print color
-</code></pre><p>(Reversed)
+<p><code>for i in [0, 1, 2, 3, 4, 5]:
+    print i**2</code></p>
+<p><strong>Do this</strong></p>
+<p><code>for i in range(6):
+    print i**2</code></p>
+<h3 id="looping-over-a-collection">Looping over a collection</h3>
+<p><code>colors = [&#39;red&#39;, &#39;green&#39;, &#39;blue&#39;, &#39;yellow&#39;]</code></p>
+<p><strong>Don&#39;t do this</strong></p>
+<p><code>for i in range(len(colors)):
+    print colors[i]</code></p>
+<p><strong>Do this instead</strong></p>
+<p><code>for color in colors:
+    print color</code></p>
+<p>(Reversed)
 <strong>Don&#39;t do this</strong></p>
-<pre><code>for i in range(len(colors)-1, -1, -1):
-    print colors[i]
-</code></pre><p><strong>Do this instead</strong></p>
-<pre><code>for color in reversed(colors):
-    print color
-</code></pre><p>###Looping over a collection and indicies</p>
+<p><code>for i in range(len(colors)-1, -1, -1):
+    print colors[i]</code></p>
+<p><strong>Do this instead</strong></p>
+<p><code>for color in reversed(colors):
+    print color</code></p>
+<h3 id="looping-over-a-collection-and-indicies">Looping over a collection and indicies</h3>
 <p><strong>Don&#39;t do this</strong></p>
-<pre><code>for i in range(len(colors)):
-    print i, &#39;--&gt;&#39;, colors[i]
-</code></pre><p><strong>Do this instead</strong></p>
-<pre><code>for i, color in enumerate(colors):
-    print i, &#39;--&gt;&#39;, color
-</code></pre><p>###Looping over two collections</p>
-<pre><code>names = [&#39;raymond&#39;, &#39;rachel&#39;, &#39;matthew&#39;]
-colors = [&#39;red&#39;, &#39;green&#39;, &#39;blue&#39;, &#39;yellow&#39;]
-
-for name, color in izip(names, colors):
+<p><code>for i in range(len(colors)):
+    print i, &#39;--&gt;&#39;, colors[i]</code></p>
+<p><strong>Do this instead</strong></p>
+<p><code>for i, color in enumerate(colors):
+    print i, &#39;--&gt;&#39;, color</code></p>
+<h3 id="looping-over-two-collections">Looping over two collections</h3>
+<p>```
+names = [&#39;raymond&#39;, &#39;rachel&#39;, &#39;matthew&#39;]
+colors = [&#39;red&#39;, &#39;green&#39;, &#39;blue&#39;, &#39;yellow&#39;]</p>
+<p>for name, color in izip(names, colors):
     print name, &#39;--&gt;&#39;, color
-</code></pre><p>(Construct a dictionary from these pairs)</p>
-<pre><code>d = dict(izip(names, colors))
-{&#39;matthew&#39;: &#39;blue&#39;, &#39;rachel&#39;: &#39;green&#39;, &#39;raymond&#39;: &#39;red&#39;}
-
-d = dict(enumerate(names))
+```</p>
+<p>(Construct a dictionary from these pairs)</p>
+<p>```
+d = dict(izip(names, colors))
+{&#39;matthew&#39;: &#39;blue&#39;, &#39;rachel&#39;: &#39;green&#39;, &#39;raymond&#39;: &#39;red&#39;}</p>
+<p>d = dict(enumerate(names))
 {0: &#39;raymond&#39;, 1: &#39;rachel&#39;, 2: &#39;matthew&#39;}
-</code></pre><p>###Looping in sorted order</p>
-<pre><code>colors = [&#39;red&#39;, &#39;green&#39;, &#39;blue&#39;, &#39;yellow&#39;]
+```</p>
+<h3 id="looping-in-sorted-order">Looping in sorted order</h3>
+<p>```
+colors = [&#39;red&#39;, &#39;green&#39;, &#39;blue&#39;, &#39;yellow&#39;]
 for color in sorted(colors):
+    print color</p>
+<p>for color in sorted(colors, reverse=True):
     print color
-
-for color in sorted(colors, reverse=True):
-    print color
-</code></pre><p>###Custom sort order</p>
-<pre><code>colors = [&#39;red&#39;, &#39;green&#39;, &#39;blue&#39;, &#39;yellow&#39;]
-</code></pre><p><strong>Don&#39;t do this</strong></p>
-<pre><code>def compare_length(c1, c2):
+```</p>
+<h3 id="custom-sort-order">Custom sort order</h3>
+<p><code>colors = [&#39;red&#39;, &#39;green&#39;, &#39;blue&#39;, &#39;yellow&#39;]</code></p>
+<p><strong>Don&#39;t do this</strong></p>
+<p>```
+def compare_length(c1, c2):
     if len(c1) &lt; len(c2): return -1
     if len(c1) &gt; len(c2): return 1
-    return 0
-
-print sorted(colors, cmp=compare_length)
-</code></pre><p><strong>Do this</strong></p>
-<pre><code>print sorted(colors, key=len)
-</code></pre><p>###Multiple exit points in loops</p>
+    return 0</p>
+<p>print sorted(colors, cmp=compare_length)
+```</p>
+<p><strong>Do this</strong></p>
+<p><code>print sorted(colors, key=len)</code></p>
+<h3 id="multiple-exit-points-in-loops">Multiple exit points in loops</h3>
 <p><strong>Don&#39;t do this</strong></p>
-<pre><code>def find(seq, target):
+<p><code>def find(seq, target):
     found = False
     for i, value in enumerate(seq):
         if value == tgt:
@@ -138,111 +142,92 @@ print sorted(colors, cmp=compare_length)
             break
     if not found:
         return -1
-    return i
-</code></pre><p><strong>Do this</strong></p>
-<pre><code>def find(seq, target):
+    return i</code></p>
+<p><strong>Do this</strong></p>
+<p>```
+def find(seq, target):
     for i, value in enumerate(seq):
         if value == tgt:
             break
         else:
             return -1
-    return i
-
-###Looping over dictionary keys
-</code></pre><p>d = {&#39;matthew&#39;: &#39;blue&#39;, &#39;rachel&#39;: &#39;green&#39;, &#39;raymond&#39;: &#39;red&#39;}</p>
-<pre><code>
-**Don&#39;t do this**
-</code></pre><p>for k in d:
-    print k</p>
-<pre><code>
-**Or this**
-</code></pre><p>for k in d.keys():
+    return i</p>
+<h3 id="looping-over-dictionary-keys">Looping over dictionary keys</h3>
+<p><code>d = {&#39;matthew&#39;: &#39;blue&#39;, &#39;rachel&#39;: &#39;green&#39;, &#39;raymond&#39;: &#39;red&#39;}</code></p>
+<p><strong>Don&#39;t do this</strong></p>
+<p><code>for k in d:
+    print k</code></p>
+<p><strong>Or this</strong></p>
+<p><code>for k in d.keys():
     if k.startswith(&#39;r&#39;):
-        del d[k]</p>
-<pre><code>
-**Do this**
-</code></pre><p>d = {k : d[k] for k in d if not k.startswith(&#39;r&#39;)}</p>
-<pre><code>
-###Looping over a dictionary keys and values
-
-**Don&#39;t do this**
-</code></pre><p>for k in d:
-    print k, &#39;--&gt;&#39;, d[k]</p>
-<pre><code>
-**Or this**
-</code></pre><p>for k, v in d.items():
-    print k, &#39;--&gt;&#39;, v</p>
-<pre><code>
-**Do this**
-</code></pre><p>for k, v in d.iteritems():
-    print k, &#39;--&gt;&#39;, v</p>
-<pre><code>
-###Counting with dictionaries
-</code></pre><p>colors = [&#39;red&#39;, &#39;green&#39;, &#39;red&#39;, &#39;blue&#39;, &#39;green&#39;, &#39;red&#39;]</p>
-<pre><code>
-**Don&#39;t do this**
-</code></pre><p>d = {}
+        del d[k]</code></p>
+<p><strong>Do this</strong></p>
+<p><code>d = {k : d[k] for k in d if not k.startswith(&#39;r&#39;)}</code></p>
+<h3 id="looping-over-a-dictionary-keys-and-values">Looping over a dictionary keys and values</h3>
+<p><strong>Don&#39;t do this</strong></p>
+<p><code>for k in d:
+    print k, &#39;--&gt;&#39;, d[k]</code></p>
+<p><strong>Or this</strong></p>
+<p><code>for k, v in d.items():
+    print k, &#39;--&gt;&#39;, v</code></p>
+<p><strong>Do this</strong></p>
+<p><code>for k, v in d.iteritems():
+    print k, &#39;--&gt;&#39;, v</code></p>
+<h3 id="counting-with-dictionaries">Counting with dictionaries</h3>
+<p><code>colors = [&#39;red&#39;, &#39;green&#39;, &#39;red&#39;, &#39;blue&#39;, &#39;green&#39;, &#39;red&#39;]</code></p>
+<p><strong>Don&#39;t do this</strong></p>
+<p>```
+d = {}
 for color in colors:
     if color not in d:
         d[color] = 0
     d[color] += 1</p>
-<p>{&#39;blue&#39;: 1, &#39;green&#39;: 2, &#39;red&#39;: 3}</p>
-<pre><code>
-**Or this**
-</code></pre><p>d = {}
+<p>{&#39;blue&#39;: 1, &#39;green&#39;: 2, &#39;red&#39;: 3}
+```</p>
+<p><strong>Or this</strong></p>
+<p><code>d = {}
 for color in colors:
-    d[color] = d.get(color, 0) + 1</p>
-<pre><code>
-**Do this**
-</code></pre><p>d = defaultdict(int)
+    d[color] = d.get(color, 0) + 1</code></p>
+<p><strong>Do this</strong></p>
+<p><code>d = defaultdict(int)
 for color in colors:
-    d[color] += 1</p>
-<pre><code>
-###List Comprehensions and Generator Expressions
-
-**Don&#39;t do this**
-</code></pre><p>result = []
+    d[color] += 1</code></p>
+<h3 id="list-comprehensions-and-generator-expressions">List Comprehensions and Generator Expressions</h3>
+<p><strong>Don&#39;t do this</strong></p>
+<p><code>result = []
 for i in range(10):
     s = i ** 2
     result.append(s)
-print sum(result)</p>
-<pre><code>
-**Do this**
-</code></pre><p>print sum(i**2 for i in xrange(10))</p>
-<pre><code>
-###Unpacking sequences
-</code></pre><p>p = &#39;Raymond&#39;, &#39;Hettinger&#39;, 0x30, &#39;python@example.com&#39;</p>
-<pre><code>
-**Don&#39;t do this**
-</code></pre><p>fname = p[0]
+print sum(result)</code></p>
+<p><strong>Do this</strong></p>
+<p><code>print sum(i**2 for i in xrange(10))</code></p>
+<h3 id="unpacking-sequences">Unpacking sequences</h3>
+<p><code>p = &#39;Raymond&#39;, &#39;Hettinger&#39;, 0x30, &#39;python@example.com&#39;</code></p>
+<p><strong>Don&#39;t do this</strong></p>
+<p><code>fname = p[0]
 lname = p[1]
 age = p[2]
-email = p[3]</p>
-<pre><code>
-**Do this**
-</code></pre><p>fname, lname, age, email = p</p>
-<pre><code>
-###Updating multiple state variables
-
-**Don&#39;t do this**
-</code></pre><p>def fibonacci(n):
+email = p[3]</code></p>
+<p><strong>Do this</strong></p>
+<p><code>fname, lname, age, email = p</code></p>
+<h3 id="updating-multiple-state-variables">Updating multiple state variables</h3>
+<p><strong>Don&#39;t do this</strong></p>
+<p><code>def fibonacci(n):
     x = 0
     y = 1
     for i in range(n):
         print x
         t = y
         y = x + y
-        x = t</p>
-<pre><code>
-**Do this**
-</code></pre><p>def fibonacci(n):
+        x = t</code></p>
+<p><strong>Do this</strong></p>
+<p><code>def fibonacci(n):
     x, y = 0, 1
     for i in range(n):
         print x
-        x, y = y, x+y
-```</p>
-<p>###References
-<a href="https://www.youtube.com/watch?v=OSGv2VnC0go">https://www.youtube.com/watch?v=OSGv2VnC0go</a></p>
+        x, y = y, x+y</code></p>
+<h3 id="references">References</h3>
+<p>https://www.youtube.com/watch?v=OSGv2VnC0go</p>
 
             </div>
 
