@@ -37,7 +37,7 @@
       <div class="container">
         <nav class="nav blog-nav">
           <a class="nav-link" href="/">Home</a>
-          <a class="nav-link active" href="#">Notes</a>
+          <a class="nav-link active" href="/pages/notes/">Notes</a>
           <a class="nav-link" href="/pages/about/">About</a>
         </nav>
       </div>
@@ -61,10 +61,10 @@
             <p class="blog-post-meta">Wed, Jul 30, 2014 by <a href="https://github.com/bjdixon">bjdixon</a></p>
             <p>I&#39;m sure there&#39;s a better way but sometimes I need to replace a partial string in a database. For example replacing a domain name. </p>
 <p>Be careful with this. Find/replace is awesome and if you&#39;re not careful it can really screw you up. With that in mind:</p>
-<p><code>UPDATE DBNAME.TableName
+<pre><code>UPDATE DBNAME.TableName
 SET DBNAME.TableName = REPLACE(DBNAME.TableName.FieldName,&#39;OldString&#39;,&#39;NewString&#39;)
-WHERE DBNAME.TableName.FieldName like &#39;%OldString%&#39;;</code></p>
-
+WHERE DBNAME.TableName.FieldName like &#39;%OldString%&#39;;
+</code></pre>
             </div>
 
         </div>

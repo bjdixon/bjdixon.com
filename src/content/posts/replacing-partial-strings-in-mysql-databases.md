@@ -10,8 +10,6 @@ I'm sure there's a better way but sometimes I need to replace a partial string i
 
 Be careful with this. Find/replace is awesome and if you're not careful it can really screw you up. With that in mind:
 
-```
-UPDATE DBNAME.TableName
-SET DBNAME.TableName = REPLACE(DBNAME.TableName.FieldName,'OldString','NewString')
-WHERE DBNAME.TableName.FieldName like '%OldString%';
-```
+    UPDATE DBNAME.TableName
+    SET DBNAME.TableName = REPLACE(DBNAME.TableName.FieldName,'OldString','NewString')
+    WHERE DBNAME.TableName.FieldName like '%OldString%';

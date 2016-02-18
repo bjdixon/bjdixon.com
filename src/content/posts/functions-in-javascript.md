@@ -12,12 +12,10 @@ Some general notes on functions, some of which only applicable to JavaScript.
 
 A free variable is not bound within a function in which it is used. It is not declared within the function or passed in as a parameter, but is still used within the function:
 
-```
-var x = 1;
-function (y) {
-    return x; // x here is a free variable
-}
-```
+    var x = 1;
+    function (y) {
+        return x; // x here is a free variable
+    }
 
 ###Pure Functions
 
@@ -41,32 +39,24 @@ A combinator is a higher order function that only use functions and other combin
 
 There are 4 ways to invoke functions, method form, function form, constructor form and apply form. The form in which you call a function determines the value of 'this'.
 
-```
-// Method Form
-anObject.methodName(args); // either this way
-anObject[methodName](args); // or this way
-```
+    // Method Form
+    anObject.methodName(args); // either this way
+    anObject[methodName](args); // or this way
 
 _this_ is set to the object calling the method (anObject in the example above).
 
-```
-// Function form
-functionObject(args);
-```
+    // Function form
+    functionObject(args);
 
 _this_ is set to the global object in ES3 or undefined in ES5 strict.
 
-```
-// Contructor form
-new FunctionValue(args);
-```
+    // Contructor form
+    new FunctionValue(args);
 
 A new object is created and assigned to _this_.
 
-```
-// Apply form
-functionObject.apply(thisObject, args); // either this way
-functionObject.call(thisObject, args); // or this way
-```
+    // Apply form
+    functionObject.apply(thisObject, args); // either this way
+    functionObject.call(thisObject, args); // or this way
 
 _this_ is passed in explicitly (thisObject in the examples above). 

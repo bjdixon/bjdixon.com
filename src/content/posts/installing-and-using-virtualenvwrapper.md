@@ -12,37 +12,37 @@ virtualenvwrapper allows storing as many virtual environments as you need in a s
 
 ###Install pip
 
-```$ sudo apt-get install python-pip```
+    $ sudo apt-get install python-pip
 
 ###Install virtualenv
 
-```$ sudo pip install virtualenv```
+    $ sudo pip install virtualenv
 
 ###Create a dir to store your virtualenvs (eg. ~/.virtualenvs)
 
-```$ mkdir ~/.virtualenvs```
+    $ mkdir ~/.virtualenvs
 
 At this point virtualenv is setup with the standard commands. The following instructions are to setup the virtualenvwrapper.
 
 ###Install virtualenvwrapper
 
-```$ sudo pip install virtualenvwrapper```
+    $ sudo pip install virtualenvwrapper
 
 ###Set WORKON_HOME to your virtualenv dir
 
-```$ export WORKON_HOME=~/.virtualenvs```
+    $ export WORKON_HOME=~/.virtualenvs
 
 ###Add virtualenvwrapper.sh to .bashrc
 
 Add this line to the end of ~/.bashrc so that the virtualenvwrapper commands are loaded.
 
-```$ . /usr/local/bin/virtualenvwrapper.sh```
+    $ . /usr/local/bin/virtualenvwrapper.sh
 
 Exit and re-open your shell, or reload .bashrc with the command ```$ source ~/.bashrc``` and you should be ready to go.
 
 ###Create a new virtualenv
 
-```$ mkvirtualenv myprojectenv```
+    $ mkvirtualenv myprojectenv
 
 to exit your new virtualenv, use **deactivate** as normal.
 
@@ -50,7 +50,7 @@ to exit your new virtualenv, use **deactivate** as normal.
 
 To load or switch between virtualenvs, use the workon command:
 
-```$ workon myprojectenv```
+    $ workon myprojectenv
 
 ###References
 

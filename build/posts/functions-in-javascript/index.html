@@ -37,7 +37,7 @@
       <div class="container">
         <nav class="nav blog-nav">
           <a class="nav-link" href="/">Home</a>
-          <a class="nav-link active" href="#">Notes</a>
+          <a class="nav-link active" href="/pages/notes/">Notes</a>
           <a class="nav-link" href="/pages/about/">About</a>
         </nav>
       </div>
@@ -62,11 +62,11 @@
             <p>Some general notes on functions, some of which only applicable to JavaScript.</p>
 <h3 id="free-variables">Free Variables</h3>
 <p>A free variable is not bound within a function in which it is used. It is not declared within the function or passed in as a parameter, but is still used within the function:</p>
-<p><code>var x = 1;
+<pre><code>var x = 1;
 function (y) {
     return x; // x here is a free variable
-}</code></p>
-<h3 id="pure-functions">Pure Functions</h3>
+}
+</code></pre><h3 id="pure-functions">Pure Functions</h3>
 <p>A function containing no free variables is a pure function. A pure function can contain a closure.</p>
 <h3 id="closures-lexical-scoping-">Closures (Lexical Scoping)</h3>
 <p>A closure is a function that closes over the variables of another function. A closure is a function that captures the external bindings contained in the scope in which it was defined for later use - even after the scope has completed. A closure is an inner function that has access to the variables of the outer function even after it returns.</p>
@@ -77,20 +77,20 @@ function (y) {
 <p>A combinator is a higher order function that only use functions and other combinators to define a result from it&#39;s arguments.</p>
 <h3 id="invoking-functions">Invoking Functions</h3>
 <p>There are 4 ways to invoke functions, method form, function form, constructor form and apply form. The form in which you call a function determines the value of &#39;this&#39;.</p>
-<p><code>// Method Form
+<pre><code>// Method Form
 anObject.methodName(args); // either this way
-anObject[methodName](args); // or this way</code></p>
-<p><em>this</em> is set to the object calling the method (anObject in the example above).</p>
-<p><code>// Function form
-functionObject(args);</code></p>
-<p><em>this</em> is set to the global object in ES3 or undefined in ES5 strict.</p>
-<p><code>// Contructor form
-new FunctionValue(args);</code></p>
-<p>A new object is created and assigned to <em>this</em>.</p>
-<p><code>// Apply form
+anObject[methodName](args); // or this way
+</code></pre><p><em>this</em> is set to the object calling the method (anObject in the example above).</p>
+<pre><code>// Function form
+functionObject(args);
+</code></pre><p><em>this</em> is set to the global object in ES3 or undefined in ES5 strict.</p>
+<pre><code>// Contructor form
+new FunctionValue(args);
+</code></pre><p>A new object is created and assigned to <em>this</em>.</p>
+<pre><code>// Apply form
 functionObject.apply(thisObject, args); // either this way
-functionObject.call(thisObject, args); // or this way</code></p>
-<p><em>this</em> is passed in explicitly (thisObject in the examples above). </p>
+functionObject.call(thisObject, args); // or this way
+</code></pre><p><em>this</em> is passed in explicitly (thisObject in the examples above). </p>
 
             </div>
 
