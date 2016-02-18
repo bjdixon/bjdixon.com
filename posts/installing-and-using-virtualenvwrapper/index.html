@@ -37,7 +37,7 @@
       <div class="container">
         <nav class="nav blog-nav">
           <a class="nav-link" href="/">Home</a>
-          <a class="nav-link active" href="#">Notes</a>
+          <a class="nav-link active" href="/pages/notes/">Notes</a>
           <a class="nav-link" href="/pages/about/">About</a>
         </nav>
       </div>
@@ -62,27 +62,27 @@
             <p>Virtualenv is a part of everyday life. However it can be painful to manage a ton of virtual environments. Without careful management, adding virtual environments all over the place can cause clutter in version control.</p>
 <p>virtualenvwrapper allows storing as many virtual environments as you need in a single non-project location. It provides commands to create, edit, switch, and remove virtual environments.</p>
 <h3 id="install-pip">Install pip</h3>
-<p><code>$ sudo apt-get install python-pip</code></p>
-<h3 id="install-virtualenv">Install virtualenv</h3>
-<p><code>$ sudo pip install virtualenv</code></p>
-<h3 id="create-a-dir-to-store-your-virtualenvs-eg-virtualenvs-">Create a dir to store your virtualenvs (eg. ~/.virtualenvs)</h3>
-<p><code>$ mkdir ~/.virtualenvs</code></p>
-<p>At this point virtualenv is setup with the standard commands. The following instructions are to setup the virtualenvwrapper.</p>
+<pre><code>$ sudo apt-get install python-pip
+</code></pre><h3 id="install-virtualenv">Install virtualenv</h3>
+<pre><code>$ sudo pip install virtualenv
+</code></pre><h3 id="create-a-dir-to-store-your-virtualenvs-eg-virtualenvs-">Create a dir to store your virtualenvs (eg. ~/.virtualenvs)</h3>
+<pre><code>$ mkdir ~/.virtualenvs
+</code></pre><p>At this point virtualenv is setup with the standard commands. The following instructions are to setup the virtualenvwrapper.</p>
 <h3 id="install-virtualenvwrapper">Install virtualenvwrapper</h3>
-<p><code>$ sudo pip install virtualenvwrapper</code></p>
-<h3 id="set-workon_home-to-your-virtualenv-dir">Set WORKON_HOME to your virtualenv dir</h3>
-<p><code>$ export WORKON_HOME=~/.virtualenvs</code></p>
-<h3 id="add-virtualenvwrapper-sh-to-bashrc">Add virtualenvwrapper.sh to .bashrc</h3>
+<pre><code>$ sudo pip install virtualenvwrapper
+</code></pre><h3 id="set-workon_home-to-your-virtualenv-dir">Set WORKON_HOME to your virtualenv dir</h3>
+<pre><code>$ export WORKON_HOME=~/.virtualenvs
+</code></pre><h3 id="add-virtualenvwrapper-sh-to-bashrc">Add virtualenvwrapper.sh to .bashrc</h3>
 <p>Add this line to the end of ~/.bashrc so that the virtualenvwrapper commands are loaded.</p>
-<p><code>$ . /usr/local/bin/virtualenvwrapper.sh</code></p>
-<p>Exit and re-open your shell, or reload .bashrc with the command <code>$ source ~/.bashrc</code> and you should be ready to go.</p>
+<pre><code>$ . /usr/local/bin/virtualenvwrapper.sh
+</code></pre><p>Exit and re-open your shell, or reload .bashrc with the command <code>$ source ~/.bashrc</code> and you should be ready to go.</p>
 <h3 id="create-a-new-virtualenv">Create a new virtualenv</h3>
-<p><code>$ mkvirtualenv myprojectenv</code></p>
-<p>to exit your new virtualenv, use <strong>deactivate</strong> as normal.</p>
+<pre><code>$ mkvirtualenv myprojectenv
+</code></pre><p>to exit your new virtualenv, use <strong>deactivate</strong> as normal.</p>
 <h3 id="switch-between-enviornments-with-workon">Switch between enviornments with workon</h3>
 <p>To load or switch between virtualenvs, use the workon command:</p>
-<p><code>$ workon myprojectenv</code></p>
-<h3 id="references">References</h3>
+<pre><code>$ workon myprojectenv
+</code></pre><h3 id="references">References</h3>
 <p>http://virtualenvwrapper.readthedocs.org/en/latest/
 http://www.rdegges.com/why-dont-you-use-virtualenvwrapper/</p>
 

@@ -37,7 +37,7 @@
       <div class="container">
         <nav class="nav blog-nav">
           <a class="nav-link" href="/">Home</a>
-          <a class="nav-link active" href="#">Notes</a>
+          <a class="nav-link active" href="/pages/notes/">Notes</a>
           <a class="nav-link" href="/pages/about/">About</a>
         </nav>
       </div>
@@ -60,8 +60,8 @@
             <h2 class="blog-post-title">Squashing git commits</h2>
             <p class="blog-post-meta">Tue, Jun 24, 2014 by <a href="https://github.com/bjdixon">bjdixon</a></p>
             <p>One liner to squash the last n commits. Don&#39;t do this if you&#39;ve already pushed commits upstream. Rewriting history isn&#39;t cool.</p>
-<p><code>git reset --soft HEAD~3 &amp;&amp; git commit -m&quot;Squashing last 3 commits&quot;</code></p>
-<p>Example given above is for the last 3 commits.</p>
+<pre><code>git reset --soft HEAD~3 &amp;&amp; git commit -m&quot;Squashing last 3 commits&quot;
+</code></pre><p>Example given above is for the last 3 commits.</p>
 
             </div>
 
