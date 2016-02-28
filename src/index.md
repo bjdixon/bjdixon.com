@@ -2,7 +2,7 @@
 title: Home
 template: home.hbt
 permalink: false
-mood: "purupururin"
+mood: "boogie"
 ---
 
 Hi there,
