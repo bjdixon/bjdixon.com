@@ -6,12 +6,6 @@
 
         <div class="col-sm-12 blog-main">
             {{{ contents }}}
-            <p><strong>My current mood could be best described as:</strong> <em>{{mood}}</em></p>
-            <div class="youtube-wrap">
-                <div class="video-container">
-                    {{{moodTube mood}}}
-                </div>
-            </div>
         </div>
 
       </div>
