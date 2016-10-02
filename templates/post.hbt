@@ -3,7 +3,7 @@
 
       <div class="row">
 
-        <div class="col-sm-8 blog-main">
+        <div class="col-sm-12 blog-main">
 
             <div class="blog-post">
             <h2 class="blog-post-title">{{title}}</h2>
@@ -12,19 +12,6 @@
             </div>
 
         </div>
-
-        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
-                  <div class="sidebar-module sidebar-module-inset">
-                    <h4>About</h4>
-                    <p>Ramblings mostly about JavaScript or Python.</p>
-          </div>
-          <div class="sidebar-module">
-            <h4>Elsewhere</h4>
-            <ul class="list-unstyled">
-              <li><a href="https://github.com/bjdixon">GitHub</a></li>
-            </ul>
-          </div>
-        </div><!-- /.blog-sidebar -->
 
       </div><!-- /.row -->
 

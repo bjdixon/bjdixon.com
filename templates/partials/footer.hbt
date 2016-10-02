@@ -1,13 +1,15 @@
 
     <footer class="blog-footer">
-      <p>Bye.</p>
+        <h4>Elsewhere</h4>
+        <ul class="list-unstyled">
+            <li><a href="https://github.com/bjdixon">GitHub</a></li>
+            <li><a href="https://gist.github.com/bjdixon">Gists</a></li>
+        </ul>
     </footer>
 
     <script src="/js/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/ie10-viewport-bug-workaround.js"></script>
-    <script src="/js/highlight.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
     <script>
     var _gaq = _gaq || [['_trackPageview']];
     _gaq.unshift(['_setAccount', 'UA-1050597-5']);
