@@ -4,7 +4,7 @@
 
 @media (min-width: 48em) {
   html {
-    font-size: 18px;
+    font-size: 16px;
   }
 }
 
@@ -42,7 +42,7 @@ a {
  */
 
 .blog-masthead {
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   background-color: #92A8D1;
   -webkit-box-shadow: inset 0 -.1rem .25rem rgba(0,0,0,.1);
           box-shadow: inset 0 -.1rem .25rem rgba(0,0,0,.1);
@@ -95,13 +95,13 @@ a {
   font-weight: normal;
 }
 .blog-description {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #999;
 }
 
 @media (min-width: 40em) {
   .blog-title {
-    font-size: 3.5rem;
+    font-size: 2rem;
   }
 }
 
@@ -149,7 +149,7 @@ a {
 }
 .blog-post-title {
   margin-bottom: .25rem;
-  font-size: 2.5rem;
+  font-size: 2rem;
 }
 .blog-post-meta {
   margin-bottom: 1.25rem;

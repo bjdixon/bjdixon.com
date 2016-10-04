@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="/favicon.ico">
 
-    <title>Squashing git commits | bjdixon.com</title>
+    <title>Installing and using PM2 | bjdixon.com</title>
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/blog.css" rel="stylesheet">
@@ -57,12 +57,33 @@
         <div class="col-sm-12 blog-main">
 
             <div class="blog-post">
-            <h2 class="blog-post-title">Squashing git commits</h2>
-            <p class="blog-post-meta">Wed, Jun 25, 2014 by <a href="https://github.com/bjdixon">bjdixon</a></p>
-            <p>One liner to squash the last n commits. Don&#39;t do this if you&#39;ve already pushed commits upstream. Rewriting history isn&#39;t cool.</p>
-<pre><code>git reset --soft HEAD~3 &amp;&amp; git commit -m&quot;Squashing last 3 commits&quot;
-</code></pre><p>Example given above is for the last 3 commits.</p>
-
+            <h2 class="blog-post-title">Installing and using PM2</h2>
+            <p class="blog-post-meta">Mon, Mar 28, 2016 by <a href="https://github.com/bjdixon">bjdixon</a></p>
+            <p>PM2 is a process manager for Node.js applications. It provides an easy way to run them in the background as a service.</p>
+<h3 id="install">Install</h3>
+<pre><code>sudo npm install -g pm2
+</code></pre><h3 id="manage-an-application-with-pm2">Manage an application with PM2</h3>
+<p>Use the pm2 start command to run your application</p>
+<pre><code>pm2 start hello-world.js
+</code></pre><p>This also adds your application to PM2&#39;s process list, which is outputted every time you start an application:</p>
+<p>To get more details about a running app use the pm2 show command</p>
+<pre><code>pm2 show &lt;id|name&gt;
+</code></pre><p>PM2 automatically assigns an App name (based on the filename, without the .js extension) and a PM2 id. PM2 also maintains other information, such as the PID of the process, its current status, and memory usage.</p>
+<p>If an application running under PM2 crashes or is killed it will automatically restart. To have an application launch on system startup use the pm2 startup command</p>
+<pre><code>pm2 startup systemd
+</code></pre><p>The last line of the resulting output includes a command that must be run with superuser privileges</p>
+<h3 id="other-pm2-commands">Other PM2 commands</h3>
+<p>Stop an application</p>
+<pre><code>pm2 stop &lt;id|name&gt;
+</code></pre><p>Restart an application</p>
+<pre><code>pm2 restart &lt;id|name&gt;
+</code></pre><p>List applications currently managed by PM2</p>
+<pre><code>pm2 list
+</code></pre><p>More information about a specific application</p>
+<pre><code>pm2 info &lt;id|name&gt;
+</code></pre><p>The PM2 process monitor can be pulled up with the monit subcommand. This displays the application status, CPU, and memory usage:</p>
+<pre><code>pm2 monit
+</code></pre>
             </div>
 
         </div>
