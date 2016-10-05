@@ -5,8 +5,7 @@ permalink: false
 mood: "boogie"
 ---
 
-Hi there,
-=========
+##Welcome to my corner of the Internet.
 
-Welcome to my corner of the Internet. If you're looking to [contact me](https://github.com/bjdixon) you can find my email address on my [github profile](https://github.com/bjdixon).
+If you're looking to [contact me](https://github.com/bjdixon) you can find my email address on my [github profile](https://github.com/bjdixon).
 

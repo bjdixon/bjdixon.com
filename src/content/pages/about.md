@@ -3,9 +3,6 @@ title: About
 template: page.hbt
 ---
 
-About
-====
-
 My name is Brian
 
 * I'm a client-side and server-side programmer
