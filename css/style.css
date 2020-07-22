@@ -1,0 +1,40 @@
+@media (min-width: 48em) {
+  html {
+    font-size: 16px;
+  }
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  color: #555;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: normal;
+  color: #333;
+}
+
+#name {
+  margin-top: 30vh;
+}
+
+#links {
+  margin: 0;
+  padding: 0;
+}
+
+#links li {
+  list-style: none;
+}
+
+#links li a {
+  font-weight: bold;
+  font-size: 6vh;
+  line-height: 10vh;
+}
